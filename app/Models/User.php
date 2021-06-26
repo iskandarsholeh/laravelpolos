@@ -62,4 +62,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Kelas::class,"users_kelas");
     }
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

@@ -16,6 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id') ->references('id') ->on('users') ->onDelete('cascade') ->onUpdate('cascade');
+            $table->string('nama_order');
             $table->string('harga');
             $table->string('status')->default('belum bayar');
             $table->timestamps();

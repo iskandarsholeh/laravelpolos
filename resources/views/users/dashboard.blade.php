@@ -125,20 +125,20 @@
       <div class="container" data-aos="fade-up">
         <div class="row">
           
-          {{-- @foreach ($dataLangganan as $langganan)
+          @foreach ($dataKelas as $langganan)
           <div class="col-md-6 d-flex align-items-stretch">
             <div class="card">
               <div class="card-img">
                 <img src="userassets/img/events-1.jpg" alt="...">
               </div>
               <div class="card-body">
-                <h5 class="card-title"><a href="">{{$langganan->nama_langganan}}</a></h5>
+                <h5 class="card-title"><a href="">{{$langganan->nama_kelas}}</a></h5>
                 <p class="fst-italic text-center">{{$langganan->harga}}</p>
                 <p class="card-text">{{$langganan->keterangan}}</p>
                 <div class="col text-center">
                   <?php $check=0 ?>
                   @foreach ($langganan->users as $p)
-                  @if ($iduser == $p->pivot->user_id && $langganan->id == $p->pivot->langganan_id)
+                  @if ($iduser == $p->pivot->user_id && $langganan->id == $p->pivot->kelas_id)
                 <?php $check++ ?>  
                     <a href="/redirects/{{$langganan->id}}/kelas  " class="btn btn-success btn-lg">buka</a>
                                
@@ -149,7 +149,7 @@
                   <form action="" method="POST" enctype="multipart/from-data">
                     @csrf
                    <input type="hidden" name="user_id" value="{{$iduser}}">
-                   <input type="hidden" name="nama_order" value="{{$langganan->nama_langganan}}">
+                   <input type="hidden" name="nama_order" value="{{$langganan->nama_kelas}}">
                    <input type="hidden" name="harga" value="{{$langganan->harga}}">
                     <input type="submit" href="/redirects/keranjang" class="btn btn-success" value="Beli">
                    </form>
@@ -159,7 +159,7 @@
               </div>
             </div>
           </div>
-          @endforeach --}}
+          @endforeach
         
         </div>
 
