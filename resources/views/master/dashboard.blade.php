@@ -104,7 +104,7 @@
                   <div class="text-bg">
                      <h1>WE ARE SANDBOX</h1>
                      <p>A full-service private tutor agency that loves what we do. </p>
-                     <a href="user/index.html">Let's Registered</a>
+                     <a href="register">Let's Registered</a>
                   </div>
                </div>
                <div class="col-md-7">

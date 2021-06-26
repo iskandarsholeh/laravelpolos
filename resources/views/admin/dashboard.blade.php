@@ -21,27 +21,28 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">SandBox Admin </a>
+                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="redirects">SandBox Admin </a>
       <div class="nav-collapse">
         <ul class="nav pull-right">
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                            class="icon-cog"></i> Account <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="javascript:;">Settings</a></li>
-              <li><a href="javascript:;">Help</a></li>
-            </ul>
-          </li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                             class="icon-user"></i> reneebae.com <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a href="javascript:;">Profile</a></li>
-              <li><a href="javascript:;">Logout</a></li>
+              <li><x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                {{ __('Profile') }}
+                            </x-jet-dropdown-link></li>
+              <li> <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <x-jet-dropdown-link href="{{ route('logout') }}"
+                                         onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-jet-dropdown-link>
+                            </form></li>
             </ul>
           </li>
         </ul>
-        <form class="navbar-search pull-right">
-          <input type="text" class="search-query" placeholder="Search">
-        </form>
+       
       </div>
       <!--/.nav-collapse --> 
     </div>
@@ -54,12 +55,18 @@
   <div class="subnavbar-inner">
     <div class="container">
       <ul class="mainnav">
-        <li class="active"><a href="index.html"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
-        <li><a href="reports.html"><i class="icon-list-alt"></i><span>Reports</span> </a> </li>
-        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
+        <li class="active"><a href="redirects"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
+        <li><a href="users.html"><i class="icon-list-alt"></i><span>Users</span> </a> </li>
+        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-dollar"></i><span>Transaksi</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="login.html">Login</a></li>
-            <li><a href="signup.html">Signup</a></li>
+            <li><a href="login.html">Order</a></li>
+            <li><a href="signup.html">Pembayaran</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drop</span> <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="kelas.html">Kelas</a></li>
+            <li><a href="signup.html">Materi</a></li>
           </ul>
         </li>
       </ul>
@@ -228,43 +235,7 @@
             </div>
             <!-- /widget-header -->
             <div class="widget-content">
-              <table class="table table-striped table-bordered">
-                <thead>
-                  <tr>
-                    <th> Free Resource </th>
-                    <th> Download</th>
-                    <th class="td-actions"> </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td> Fresh Web Development Resources </td>
-                    <td> http://www.egrappler.com/ </td>
-                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                  <tr>
-                    <td> Fresh Web Development Resources </td>
-                    <td> http://www.egrappler.com/ </td>
-                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                  <tr>
-                    <td> Fresh Web Development Resources </td>
-                    <td> http://www.egrappler.com/ </td>
-                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                  <tr>
-                    <td> Fresh Web Development Resources </td>
-                    <td> http://www.egrappler.com/ </td>
-                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                  <tr>
-                    <td> Fresh Web Development Resources </td>
-                    <td> http://www.egrappler.com/ </td>
-                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                
-                </tbody>
-              </table>
+              
             </div>
             <!-- /widget-content --> 
           </div>
