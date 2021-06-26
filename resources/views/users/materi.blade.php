@@ -224,7 +224,7 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="/" class="logo"><b>KAMAR<span>KODING</span></b></a>
+      <a href="/" class="logo"><b>SAND<span>BOX</span></b></a>
       
     {{-- tombol profile --}}
    
@@ -324,7 +324,7 @@
     <footer class="site-footer">
       <div class="text-center">
         <p>
-          &copy; Copyrights <strong>KAMAR KODING</strong>. 
+          &copy; Copyrights <strong>sandbox</strong>. 
         </p>
         <a href="blank.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
