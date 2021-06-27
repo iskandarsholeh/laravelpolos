@@ -10,6 +10,55 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
+    // :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::fungsi crud order:::::::::::::::::::::::::::::::::::::::::::: //
+    public function order(){
+        $role=Auth::user()->role;
+        if($role == '1'){
+            $dataOrder = Order::get();
+            $dataUser = User::get();
+            // dd($order);
+            return view('admin/order')->with(compact('dataOrder','dataUser'));
+        }else {
+            return redirect('/redirects');
+        }
+    }
+    public function updateOrder(Request $request)
+    {
+        // dd($request);
+        $order = Order::findOrFail($request->id);
+        $order->update($request->all());
+        return redirect('redirects/order')->with('sukses', 'Data berhasil diupdate');
+    }
+    public function destroyOrder(Request $request)
+    {
+        $order = Order::findOrFail($request->id);
+        $order->delete();
+        return redirect('redirects/order')->with('sukses', 'Data berhasil dihapus');
+    }
+    // :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::fungsi crud pembayaran :::::::::::::::::::::::::::::::::::::: //
+    public function pembayaran(){
+        $role=Auth::user()->role;
+        if($role == '1'){
+            $dataPembayaran = Pembayaran::get();
+            // dd($order);
+            return view('admin/pembayaran')->with(compact('dataPembayaran'));
+        }else {
+            return redirect('/redirects');
+        }
+    }
+    public function updatePembayaran(Request $request)
+    {
+        // dd($request);
+        $pembayaran = Pembayaran::findOrFail($request->id);
+        $pembayaran->update($request->all());
+        return redirect('redirects/pembayaran')->with('sukses', 'Data berhasil diupdate');
+    }
+    public function destroyPembayaran(Request $request)
+    {
+        $pembayaran = Pembayaran::findOrFail($request->id);
+        $pembayaran->delete();
+        return redirect('redirects/pembayaran')->with('sukses', 'Data berhasil dihapus');
+    }
     // :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::fungsi crud kelas:::::::::::::::::::::::::::::::::::::::::::: //
     public function kelas(){
         $role=Auth::user()->role;
@@ -71,6 +120,6 @@ class AdminController extends Controller
     {
         $materi = Materi::findOrFail($request->id);
         $materi->delete();
-        return redirect('redirects/materi')->with('sukses', 'Data berhasil dihapus');
+        return redirect('redirects/materi   ')->with('sukses', 'Data berhasil dihapus');
     }
 }

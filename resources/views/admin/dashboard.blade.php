@@ -55,18 +55,18 @@
   <div class="subnavbar-inner">
     <div class="container">
       <ul class="mainnav">
-        <li class="active"><a href="redirects"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
+        <li class="active"><a href="/redirects"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
         <li><a href="users.html"><i class="icon-list-alt"></i><span>Users</span> </a> </li>
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-dollar"></i><span>Transaksi</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="login.html">Order</a></li>
-            <li><a href="signup.html">Pembayaran</a></li>
+            <li><a href="/redirects/order">Order</a></li>
+            <li><a href="/redirects/pembayaran">Pembayaran</a></li>
           </ul>
         </li>
-        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drop</span> <b class="caret"></b></a>
+        <li class=" dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drop</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="kelas.html">Kelas</a></li>
-            <li><a href="signup.html">Materi</a></li>
+            <li><a href="/redirects/kelas">Kelas</a></li>
+            <li><a href="/redirects/materi">Materi</a></li>
           </ul>
         </li>
       </ul>

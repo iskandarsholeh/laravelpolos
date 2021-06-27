@@ -27,6 +27,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/redirects',[IndexController::class,'index']);
 
 //------------------------------------------admin------------------------------------------------//
+// ini buat order
+Route::get('/redirects/order',[AdminController::class,'order']);
+Route::put('/redirects/order',[AdminController::class,'updateorder']);
+Route::delete('/redirects/order',[AdminController::class,'destroyorder']);
+//ini buat pembayaran
+Route::get('/redirects/pembayaran',[AdminController::class,'pembayaran']);
+Route::delete('/redirects/pembayaran',[AdminController::class,'pembayaran']);
 //ini buat kelas
 Route::get('/redirects/kelas',[AdminController::class,'kelas']);
 Route::post('/redirects/kelas',[AdminController::class,'storekelas']);

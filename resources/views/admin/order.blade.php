@@ -57,13 +57,13 @@
       <ul class="mainnav">
         <li class="dropdown"><a href="/redirects"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
         <li><a href="users.html"><i class="icon-list-alt"></i><span>Users</span> </a> </li>
-        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-dollar"></i><span>Transaksi</span> <b class="caret"></b></a>
+        <li class="dropdown active"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-dollar"></i><span>Transaksi</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="/redirects/order">Order</a></li>
             <li><a href="/redirects/pembayaran">Pembayaran</a></li>
           </ul>
         </li>
-        <li class=" dropdown active"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drop</span> <b class="caret"></b></a>
+        <li class=" dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drop</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="/redirects/kelas">Kelas</a></li>
             <li><a href="/redirects/materi">Materi</a></li>
@@ -84,59 +84,7 @@
           <!-- /widget -->
           <div class="widget widget-table action-table">
             <div class="widget-header"> <i class="icon-th-list"></i>
-              <h3>Kelas Management</h3>
-              {{-- Ini Tombol Tambah --}}
-              <a class="btn btn-primary pull-right" data-toggle="modal" data-target="#tambah">Tambah Kelas</a>
-              <div id="tambah" class="modal fade" role="dialog">
-           <div class="modal-dialog">
-               <div class="modal-content">
-                   <div class="modal-header">
-                       <button type="button" class="close" data-dismiss="modal">&times;</button>
-                       
-                   </div>
-                   <form action="" method="POST" enctype="multipart/from-data">  
-                                   
-                   @csrf
-                       <div class="modal-body">
-                        <div class="from-group">
-                            <label class="control-label" for="kelas_id" style="color: black">Nama Kelas: </label>
-                             <select class="from-control" name="kelas_id" style="color: black">
-                                @foreach ($datakelas as $l)
-                                <option value="{{$l->id}}" style="color: black">{{$l->nama_kelas}}</option>
-                                @endforeach
-                             </select>
-                          </div>
-                         <div class="from-group">
-                             <label class="control-label" for="nm_brg" style="color: black"> Nama Materi: </label>
-                             <input type="text" name="nama_materi" class="from-control" id="nm_brg" style="color: black" required>
-                         </div>
-                         <div class="from-group">
-                           <label class="control-label" for="nm_brg" style="color: black"> Keterangan: </label>
-                           <input type="text" name="keterangan" class="from-control" id="nm_brg" style="color: black" required>
-                       </div>
-                       <div class="from-group">
-                        <label class="control-label" for="nm_brg" style="color: black"> Link Foto: </label>
-                        <input type="text" name="foto" class="from-control" id="nm_brg" style="color: black" placeholder="Youtube (embed)" required>
-                    </div>
-                       <div class="from-group">
-                         <label class="control-label" for="nm_brg" style="color: black"> Link Video: </label>
-                         <input type="text" name="video" class="from-control" id="nm_brg" style="color: black" placeholder="Youtube (embed)" required>
-                     </div>
-                     <div class="from-group">
-                        <label class="control-label" for="nm_brg" style="color: black"> Link modul: </label>
-                        <input type="text" name="modul" class="from-control" id="nm_brg" style="color: black" required>
-                    </div>
-                         
-                       <div class="modal-footer">
-                           <button type="reset" class="btn btn-danger">Reset</button>
-                           <input type="submit" class="btn btn-success" value="Save">
-                       </div>
-                       </div>
-                       </form>
-                       </div>
-                       </div>
-                       </div>
-                       {{-- end tombol tambah --}}	
+              <h3>Order Management</h3>
             </div>
             <!-- /widget-header -->
             <div class="widget-content">
@@ -144,30 +92,28 @@
                 <thead>
                   <tr>
                     <th> ID </th>
-                    <th> Nama Kelas </th>
-                    <th> Nama Materi </th>
-                    <th> Foto </th>
-                    <th> Keterangan </th>
-                    <th> Video </th>
-                    <th> Modul </th>
+                    <th> ID User</th>
+                    <th> Nama Pembeli </th>
+                    <th> Nama Order </th>
+                    <th> Harga </th>
+                    <th> Status </th>
                     <th> Dibuat Pada </th>
                     <th class="td-actions"> </th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($dataMateri as $kelas)
+                  @foreach ($dataOrder as $kelas)
                   <tr>
                     <td>{{ $kelas->id }}</td>
-                    <td>{{ $kelas->nama_materi }}</td>
-                    @foreach ($datakelas as $k)
-                    @if ($k->id == $kelas->kelas_id)
-                    <td> {{ $k->nama_kelas }} </td>
+                    @foreach ($dataUser as $k)
+                    @if ($k->id == $kelas->user_id)
+                    <td> {{ $k->id }} </td>
+                    <td> {{ $k->name }} </td>
                     @endif
                     @endforeach
-                    <td><img src="{{ $kelas->foto }}" width="150"></td>
-                    <td> {{ $kelas->keterangan }} </td>
-                    <td> {{ $kelas->video }} </td>
-                    <td> {{ $kelas->modul }} </td>
+                    <td>{{ $kelas->nama_order }}</td>
+                    <td> {{ $kelas->harga }} </td>
+                    <td> {{ $kelas->status }} </td>
                     <td> {{ $kelas->created_at }} </td>
                     <td class="td-actions">
                       {{-- Ini Tombol edit --}}
@@ -185,34 +131,16 @@
                                <div class="modal-body">
                                  
                                 <input type="hidden" name="id" value="{{$kelas->id}}">
-                                <div class="from-group">
-                                    <label class="control-label" for="kelas_id" style="color: black">Nama Kelas: </label>
-                                     <select class="from-control" name="kelas_id" style="color: black">
-                                        @foreach ($datakelas as $l)
-                                        <option value="{{$l->id}}" style="color: black">{{$l->nama_kelas}}</option>
-                                        @endforeach
+                                 <div class="from-group">
+                                    <label class="control-label" for="status" style="color: black">Status Pembayaran: </label>
+                                     <select class="from-control" name="status" style="color: black">
+                                     
+                                        <option value="Belum Bayar" style="color: black">Belum Bayar</option>
+                                        <option value="On Progress" style="color: black">On Progress</option>
+                                        <option value="Sukses" style="color: black">Sukses</option>
+
                                      </select>
                                   </div>
-                                 <div class="from-group">
-                                     <label class="control-label" for="nm_brg" style="color: black"> Nama Materi: </label>
-                                     <input type="text" name="nama_materi" class="from-control" id="nm_brg" style="color: black" value="{{ $kelas->nama_materi }}" required>
-                                 </div>
-                                 <div class="from-group">
-                                   <label class="control-label" for="nm_brg" style="color: black"> Keterangan: </label>
-                                   <input type="text" name="keterangan" class="from-control" id="nm_brg" style="color: black" value="{{ $kelas->keterangan }}" required>
-                               </div>
-                               <div class="from-group">
-                                <label class="control-label" for="nm_brg" style="color: black"> Link Foto: </label>
-                                <input type="text" name="foto" class="from-control" id="nm_brg" style="color: black" placeholder="" value="{{ $kelas->foto }}" required>
-                            </div>
-                               <div class="from-group">
-                                 <label class="control-label" for="nm_brg" style="color: black"> Link Video: </label>
-                                 <input type="text" name="video" class="from-control" id="nm_brg" style="color: black" placeholder="Youtube (embed)" value="{{ $kelas->video }}"required>
-                             </div>
-                             <div class="from-group">
-                                <label class="control-label" for="nm_brg" style="color: black"> Link modul: </label>
-                                <input type="text" name="modul" class="from-control" id="nm_brg" style="color: black" value="{{ $kelas->modul }}" required>
-                            </div>
                                  
                                <div class="modal-footer">
                                    <button type="reset" class="btn btn-danger">Reset</button>
