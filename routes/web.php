@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,17 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('/redirects',[IndexController::class,'index']);
 
+//------------------------------------------admin------------------------------------------------//
+//ini buat kelas
+Route::get('/redirects/kelas',[AdminController::class,'kelas']);
+Route::post('/redirects/kelas',[AdminController::class,'storekelas']);
+Route::put('/redirects/kelas',[AdminController::class,'updatekelas']);
+Route::delete('/redirects/kelas',[AdminController::class,'destroykelas']);
+//ini buat materi
+Route::get('/redirects/materi',[AdminController::class,'materi']);
+Route::post('/redirects/materi',[AdminController::class,'storemateri']);
+Route::put('/redirects/materi',[AdminController::class,'updatemateri']);
+Route::delete('/redirects/materi',[AdminController::class,'destroymateri']);
 //------------------------------------user------------------------------------------------//
 // ::::::::::::::::::::::::::::::::::: Pembelian Pengguna ::::::::::::::::::::::::::::::::::::: //
 // beli didashboard
